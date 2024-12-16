@@ -1,12 +1,14 @@
 name: flutter_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
   sdk: ^3.5.4
 
 dependencies:
+  dio: ^5.7.0
+  get: ^4.6.6
   flutter:
     sdk: flutter
 
