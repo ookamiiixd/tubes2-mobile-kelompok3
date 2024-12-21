@@ -1,26 +1,31 @@
-// To parse this JSON data, do
-//
-//     final favouritesResponsesModelDelete = favouritesResponsesModelDeleteFromJson(jsonString);
 
-import 'package:meta/meta.dart';
-import 'dart:convert';
+import 'dart:convert'; // Untuk memproses JSON
 
-FavouritesResponsesModelDelete favouritesResponsesModelDeleteFromJson(String str) => FavouritesResponsesModelDelete.fromJson(json.decode(str));
+// Fungsi untuk mem-parsing JSON string menjadi objek FavouritesResponsesModelDelete
+FavouritesResponsesModelDelete favouritesResponsesModelDeleteFromJson(String str) => 
+    FavouritesResponsesModelDelete.fromJson(json.decode(str));
 
-String favouritesResponsesModelDeleteToJson(FavouritesResponsesModelDelete data) => json.encode(data.toJson());
+// Fungsi untuk mengubah objek FavouritesResponsesModelDelete menjadi JSON string
+String favouritesResponsesModelDeleteToJson(FavouritesResponsesModelDelete data) => 
+    json.encode(data.toJson());
 
+// Model data untuk FavouritesResponsesModelDelete
 class FavouritesResponsesModelDelete {
-    final String message;
+  final String message;
 
-    FavouritesResponsesModelDelete({
-        required this.message,
-    });
+  // Konstruktor dengan parameter wajib (required)
+  FavouritesResponsesModelDelete({
+    required this.message,
+  });
 
-    factory FavouritesResponsesModelDelete.fromJson(Map<String, dynamic> json) => FavouritesResponsesModelDelete(
-        message: json["message"],
-    );
+  // Factory method untuk membuat instance dari JSON map
+  factory FavouritesResponsesModelDelete.fromJson(Map<String, dynamic> json) => 
+      FavouritesResponsesModelDelete(
+        message: json["message"] ?? "", // Fallback jika message null
+      );
 
-    Map<String, dynamic> toJson() => {
+  // Method untuk mengubah objek menjadi JSON map
+  Map<String, dynamic> toJson() => {
         "message": message,
-    };
+      };
 }
