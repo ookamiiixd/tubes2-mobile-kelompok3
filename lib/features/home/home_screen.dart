@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tubes2_uas_kelompok/features/home/controller/home_controller.dart';
+import 'package:TUBES2-MOBILE-KELOMPOK3/features/home/controller/home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,11 +16,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildHeaderSection(),
+              _buildHeaderSection(),
               Expanded(
-                child: Obx(() => controller.images.isNotEmpty
-                    ? buildImageList(controller) : buildLoading()),
-                    ),
+                child: Obx(() => controller.images.isNotEmpty ?
+                     _buildImageList(controller) : _buildLoading()),
+                ),
+
             ],
           ),
         ),
@@ -28,7 +29,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-Widget _buildHeaderSection() {
+
+Widget buildHeaderSection() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     child: Column(
@@ -44,7 +46,7 @@ Widget _buildHeaderSection() {
         ),
         const SizedBox(height: 10),
         Text(
-          "Temukan Kucing lucu untuk dijadikan walpaper!",
+          "Temukan Kucing lucu untuk dijadikan wallpaper!",
           style: const TextStyle(
             color: Colors.blue,
             fontSize: 30,
@@ -55,7 +57,8 @@ Widget _buildHeaderSection() {
     ),
   );
 }
-Widget _buildImageList(HomeController controller) {
+
+Widget buildImageList(HomeController controller) {
   return ListView.builder(
     itemCount: controller.images.length,
     itemBuilder: (context, index) {
@@ -69,9 +72,8 @@ Widget _buildImageList(HomeController controller) {
   );
 }
 
-Widget _buildLoading() {
+Widget buildLoading() {
   return const Center(
     child: CircularProgressIndicator(),
   );
 }
-
